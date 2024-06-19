@@ -17,7 +17,7 @@ const Home = () => {
             />
           </div>
           <span className="absolute top-72">
-            WEBSITE UNDER CONSTRUCTION
+            FANOV WEBSITE UNDER CONSTRUCTION 
           </span>
         </div>
       </div>
