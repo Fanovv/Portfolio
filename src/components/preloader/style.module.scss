@@ -1,0 +1,31 @@
+.introduction {
+  height: 100dvh;
+  width: 100dvw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 60px;
+  padding-bottom: 30px;
+  position: fixed;
+  z-index: 99;
+  background-color: hsl(var(--background));
+  p {
+    position: absolute;
+    bottom: 30px;
+    right: 60px;
+    color: hsl(var(--foreground));
+    font-size: 72px;
+    font-weight: 900;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  h1 {
+    font-size: 105px;
+    font-weight: 900;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+}
