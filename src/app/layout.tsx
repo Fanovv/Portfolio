@@ -5,6 +5,11 @@ import { ThemeProvider } from "@/components/theme_provider";
 import { Meteors } from "@/components/ui/meteors";
 import { StarsBackground } from "@/components/ui/stars-background";
 import Preloader from "@/components/preloader";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "@/components/ui/toaster";
+import Footer from "@/components/footer/footer";
+import Header from "@/components/header/header";
+import ElasticCursor from "@/components/ui/ElasticCursor";
 
 export const metadata: Metadata = {
   title: config.title,
@@ -57,7 +62,15 @@ export default function RootLayout({
             <Meteors number={10} />
             <StarsBackground />
           </div>
-          <Preloader>{children}</Preloader>
+          <Preloader>
+            <TooltipProvider>
+              <Header />
+              {children}
+              <Footer />
+            </TooltipProvider>
+            <Toaster />
+            <ElasticCursor/>
+          </Preloader>
         </ThemeProvider>
       </body>
     </html>
