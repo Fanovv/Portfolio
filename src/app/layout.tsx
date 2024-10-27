@@ -49,7 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="font-poppins">
-      <body>
+      <body style={{overflow: 'auto'}}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -59,8 +59,8 @@ export default function RootLayout({
             className="fixed inset-0 dark:bg-gradient-to-tl from-black via-zinc-600/20 to-black"
             aria-hidden="true"
           >
-            <Meteors number={10} />
-            <StarsBackground />
+            <Meteors number={10} className="-z-50" />
+            <StarsBackground className="-z-50"/>
           </div>
           <Preloader>
             <TooltipProvider>

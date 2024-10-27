@@ -1,24 +1,29 @@
 "use client";
-import { Meteors } from "@/components/ui/meteors";
-import Stars from "../components/Stars";
-import dynamic from "next/dynamic";
 
-const Home = () => {
+import AnimatedBackground from "@/components/3d-calculator/animated-background";
+import ContactSection from "@/components/sections/contact";
+import HomeSection from "@/components/sections/home";
+import ProjectSection from "@/components/sections/projects";
+import SkillSection from "@/components/sections/skills";
+import SmoothScroll from "@/components/smooth-scroll";
+import { cn } from "@/lib/utils";
+
+function MainPage() {
   return (
-    <div className="relative h-screen overflow-hidden">
-      
-      <div className="flex justify-center items-center text-center text-white font-extrabold text-4xl tracking-widest">
-        <div className="absolute inset-0 flex justify-center items-center flex-col">
-          
-        </div>
-      </div>
-    </div>
+    <>
+      <SmoothScroll>
+        <main className={cn("bg-transparent")}>
+          <div className="top-0 z-[1] fixed w-full h-screen" >
+            <AnimatedBackground />
+          </div>
+          <HomeSection/>
+          <SkillSection/>
+          <ProjectSection/>
+          <ContactSection/>
+        </main>
+      </SmoothScroll>
+    </>
   );
-};
+}
 
-const PlayerWithNoSSR = dynamic(
-  () => import('@lottiefiles/react-lottie-player').then(module => module.Player),
-  {ssr: false},
-);
-
-export default Home;
+export default MainPage;
