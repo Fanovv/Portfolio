@@ -40,7 +40,7 @@ const AnimatedBackground = () => {
   const handleMouseHover = (e: SplineEvent) => {
     if (!splineApp || selectedSkill?.name === e.target.name) return;
 
-    if (e.target.name === "body" || e.target.name === "platform") {
+    if (e.target.name === "body" || e.target.name === "platform" || e.target.name === "glass") {
       setSelectedSkill(null);
       if (splineApp.getVariable("heading") && splineApp.getVariable("desc")) {
         splineApp.setVariable("heading", "");
