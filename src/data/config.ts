@@ -25,11 +25,13 @@ const config = {
   ],
   author: "Affan Noviananda Putra",
   email: "affannovian@gmail.com",
+  resume: "https://drive.google.com/file/d/1Foyesl3G9Bey-FpLQkI3xciKP8KvG9Rq/view?usp=sharing",
   site: "https://fanov.dev",
   social: {
     linkedin: "https://www.linkedin.com/in/affannovianandaputra/",
     instagram: "https://www.instagram.com/affannovian",
     github: "https://github.com/Fanovv",
+    whatsapp: "https://wa.me/+6285771971148"
   },
   welcome: 'WELCOME TO MY PORTFOLIO! 🚀',
   get ogImg() {
