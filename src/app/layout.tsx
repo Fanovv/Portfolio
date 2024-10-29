@@ -10,6 +10,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header";
 import ElasticCursor from "@/components/ui/ElasticCursor";
+import ConsoleClear from "@/components/console-clearing";
 
 export const metadata: Metadata = {
   title: config.title,
@@ -69,6 +70,7 @@ export default function RootLayout({
               <Footer />
             </TooltipProvider>
             <Toaster />
+            <ConsoleClear/>
             <ElasticCursor/>
           </Preloader>
         </ThemeProvider>

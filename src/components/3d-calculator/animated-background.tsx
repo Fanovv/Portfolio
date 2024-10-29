@@ -40,7 +40,7 @@ const AnimatedBackground = () => {
   const handleMouseHover = (e: SplineEvent) => {
     if (!splineApp || selectedSkill?.name === e.target.name) return;
 
-    if (e.target.name === "body" || e.target.name === "platform") {
+    if (e.target.name === "body" || e.target.name === "platform" || e.target.name === "glass") {
       setSelectedSkill(null);
       if (splineApp.getVariable("heading") && splineApp.getVariable("desc")) {
         splineApp.setVariable("heading", "");
@@ -60,6 +60,19 @@ const AnimatedBackground = () => {
     splineApp.setVariable("heading", selectedSkill.label);
     splineApp.setVariable("desc", selectedSkill.description);
   }, [selectedSkill]);
+
+  useEffect(() => {
+    if(!splineApp) return;
+    const explanationText = splineApp.findObjectById("91d09463-ca0e-48f7-9275-281dcdfd0b0c");
+    if(!explanationText) return;
+    if(activeSection !== "skills"){
+      explanationText.visible = false;
+      return;
+    }else{
+      explanationText.visible = true;
+      return;
+    }
+  },[splineApp, activeSection]);
 
   useEffect(() => {
     handleSplineInteractions();
@@ -233,6 +246,10 @@ const AnimatedBackground = () => {
 
     gsap.set(calc.position, {
       ...calculatorStates("home").position,
+    });
+
+    gsap.set(calc.rotation, {
+      ...calculatorStates("home").rotation,
     });
 
     //transition to Skills
