@@ -15,7 +15,7 @@ const config = {
   prefix: "",
   theme: {
     fontFamily: {
-      poppins: ["Poppins", "sans-serif"]
+      poppins: ["Poppins", "sans-serif"],
     },
     container: {
       center: true,
@@ -82,11 +82,15 @@ const config = {
             opacity: "0",
           },
         },
+        "reverse-spin": {
+          to: { transform: "rotate(-360deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "meteor-effect": "meteor 5s linear infinite",
+        "reverse-spin": "reverse-spin 3s linear infinite"
       },
     },
   },

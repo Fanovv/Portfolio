@@ -28,9 +28,12 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.3.0",
+    "resend": "^4.0.1-alpha.0",
     "sass": "^1.80.3",
+    "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.13",

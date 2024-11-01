@@ -8,24 +8,25 @@ const SkillSection = () => {
       id="skills"
       className={cn("relative w-full h-screen md:h-[150dvh]")}
     >
-      {/* <div className="top-[70px] sticky mb-96">
+      <div className="top-[70px] sticky mb-96 z-[2]">
         <Link href={"#skills"}>
           <BoxReveal width="100%">
             <h2
               className={cn(
                 "bg-clip-text text-4xl text-center text-transparent md:text-7xl",
                 "bg-gradient-to-b from-black/80 to-black/50",
-                "dark:bg-gradient-to-b dark:from-white/80 dark:to-white/20 dark:bg-opacity-50 "
+                "bg-opacity-50 text-white italic"
               )}
             >
-              SKILLS
+              <span className="font-black">S</span>kills
             </h2>
           </BoxReveal>
+          <img src="/assets/signature.svg" className="absolute left-[50%] translate-x-[-50%] bottom-2 w-32 h-32 md:bottom-12 md:w-auto md:h-auto"/>
         </Link>
-        <p className="mx-auto mt-4 line-clamp-4 max-w-3xl font-normal text-base text-center text-neutral-300">
+        <p className="mx-auto mt-14 line-clamp-4 max-w-3xl font-normal text-md md:text-base text-center text-neutral-300">
           (hint: press a key)
         </p>
-      </div> */}
+      </div>
     </section>
   );
 };
