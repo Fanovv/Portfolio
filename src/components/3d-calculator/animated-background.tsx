@@ -40,7 +40,7 @@ const AnimatedBackground = () => {
   const handleMouseHover = (e: SplineEvent) => {
     if (!splineApp || selectedSkill?.name === e.target.name) return;
 
-    if (e.target.name === "body" || e.target.name === "platform" || e.target.name === "glass") {
+    if (e.target.name === "body" || e.target.name === "platform") {
       setSelectedSkill(null);
       if (splineApp.getVariable("heading") && splineApp.getVariable("desc")) {
         splineApp.setVariable("heading", "");
@@ -62,22 +62,24 @@ const AnimatedBackground = () => {
   }, [selectedSkill]);
 
   useEffect(() => {
-    if(!splineApp) return;
-    const explanationText = splineApp.findObjectById("91d09463-ca0e-48f7-9275-281dcdfd0b0c");
-    if(!explanationText) return;
-    if(activeSection !== "skills"){
+    if (!splineApp) return;
+    const explanationText = splineApp.findObjectById(
+      "91d09463-ca0e-48f7-9275-281dcdfd0b0c"
+    );
+    if (!explanationText) return;
+    if (activeSection !== "skills") {
       explanationText.visible = false;
       return;
-    }else{
+    } else {
       explanationText.visible = true;
       return;
     }
-  },[splineApp, activeSection]);
+  }, [splineApp, activeSection]);
 
   useEffect(() => {
     handleSplineInteractions();
     handleGsapAnimations();
-    setFallingStars(getFallingStarsAnimation());
+    // setFallingStars(getFallingStarsAnimation());
     setKeycapAnimations(getKeyCapsAnimation());
   }, [splineApp]);
 
@@ -131,13 +133,13 @@ const AnimatedBackground = () => {
         splineApp.setVariable("desc", "");
       }
 
-      if (activeSection === "projects") {
-        await sleep(300);
-        fallingStars?.start();
-      } else {
-        await sleep(200);
-        fallingStars?.stop();
-      }
+      // if (activeSection === "projects") {
+      //   await sleep(300);
+      //   fallingStars?.start();
+      // } else {
+      //   await sleep(200);
+      //   fallingStars?.stop();
+      // }
 
       if (activeSection === "contact") {
         await sleep(600);
@@ -190,22 +192,13 @@ const AnimatedBackground = () => {
     const allObjects = splineApp.getAllObjects();
     const keycap = allObjects.filter((obj) => obj.name === "keycap");
     await sleep(900);
-    if (isMobile) {
-      const mobileKeyCaps = allObjects.filter(
-        (obj) => obj.name === "keycap-mobile"
-      );
-      mobileKeyCaps.forEach((keycap, idx) => {
-        keycap.visible = true;
-      });
-    } else {
-      const desktopKeyCaps = allObjects.filter(
-        (obj) => obj.name === "keycap-desktop"
-      );
-      desktopKeyCaps.forEach(async (keycap, idx) => {
-        await sleep(idx * 70);
-        keycap.visible = true;
-      });
-    }
+    const desktopKeyCaps = allObjects.filter(
+      (obj) => obj.name === "keycap-desktop"
+    );
+    desktopKeyCaps.forEach(async (keycap, idx) => {
+      await sleep(idx * 70);
+      keycap.visible = true;
+    });
 
     keycap.forEach(async (keycap, idx) => {
       keycap.visible = false;
@@ -374,6 +367,7 @@ const AnimatedBackground = () => {
   };
 
   const getFallingStarsAnimation = () => {
+    //use porto_calc_fallingstars.spline
     const framesParent = splineApp?.findObjectByName("falling-stars");
     const frames: (SPEObject | undefined)[] = [];
     for (let i = 1; i <= 12; i++) {
@@ -470,7 +464,7 @@ const AnimatedBackground = () => {
             setSplineApp(app);
             bypassLoading();
           }}
-          scene="/assets/porto-calc.spline"
+          scene="/assets/porto_calc.spline"
         />
       </Suspense>
     </>

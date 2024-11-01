@@ -1,6 +1,7 @@
 "use client";
 
 import AnimatedBackground from "@/components/3d-calculator/animated-background";
+import AboutSection from "@/components/sections/about";
 import ContactSection from "@/components/sections/contact";
 import HomeSection from "@/components/sections/home";
 import ProjectSection from "@/components/sections/projects";
@@ -17,6 +18,7 @@ function MainPage() {
             <AnimatedBackground />
           </div>
           <HomeSection/>
+          <AboutSection/>
           <SkillSection/>
           <ProjectSection/>
           <ContactSection/>
