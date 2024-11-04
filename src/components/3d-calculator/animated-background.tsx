@@ -10,6 +10,7 @@ import { Skill, Skillname, SKILLS } from "@/data/skills";
 import { STATES } from "./config";
 import { useRouter } from "next/navigation";
 import { sleep } from "@/lib/utils";
+import { config } from "@/data/config";
 const Spline = React.lazy(() => import("@splinetool/react-spline"));
 
 gsap.registerPlugin(ScrollTrigger);
@@ -24,7 +25,11 @@ const AnimatedBackground = () => {
 
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
   const [activeSection, setActiveSection] = useState<Section>("home");
-  const [fallingStars, setFallingStars] = useState<{
+  // const [fallingStars, setFallingStars] = useState<{
+  //   start: () => void;
+  //   stop: () => void;
+  // }>();
+  const [typingEffect, setTypingEffect] = useState<{
     start: () => void;
     stop: () => void;
   }>();
@@ -66,20 +71,20 @@ const AnimatedBackground = () => {
     const explanationText = splineApp.findObjectById(
       "91d09463-ca0e-48f7-9275-281dcdfd0b0c"
     );
-    if (!explanationText) return;
-    if (activeSection !== "skills") {
-      explanationText.visible = false;
-      return;
-    } else {
-      explanationText.visible = true;
-      return;
-    }
+    const jobdescText = splineApp.findObjectById(
+      "273b0c85-d36f-4482-aad3-5b926e28cd27"
+    );
+    if (!explanationText || !jobdescText) return;
+
+    explanationText.visible = activeSection === "skills";
+    jobdescText.visible = activeSection === "about";
   }, [splineApp, activeSection]);
 
   useEffect(() => {
     handleSplineInteractions();
     handleGsapAnimations();
     // setFallingStars(getFallingStarsAnimation());
+    setTypingEffect(getTypingEffectAnimation());
     setKeycapAnimations(getKeyCapsAnimation());
   }, [splineApp]);
 
@@ -125,6 +130,14 @@ const AnimatedBackground = () => {
       } else {
         rotateCalc.pause();
         teardownCalc.pause();
+      }
+
+      if (activeSection === "about") {
+        await sleep(300);
+        typingEffect?.start();
+      } else {
+        await sleep(200);
+        typingEffect?.stop();
       }
 
       if (activeSection === "skills") {
@@ -245,6 +258,46 @@ const AnimatedBackground = () => {
       ...calculatorStates("home").rotation,
     });
 
+    //transition to About
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: "#about",
+        start: "top 50%",
+        end: "bottom bottom",
+        scrub: true,
+        onEnter: () => {
+          setActiveSection("about");
+          gsap.to(calc.scale, {
+            ...calculatorStates("about").scale,
+            duration: 1,
+          });
+          gsap.to(calc.position, {
+            ...calculatorStates("about").position,
+            duration: 1,
+          });
+          gsap.to(calc.rotation, {
+            ...calculatorStates("about").rotation,
+            duration: 1,
+          });
+        },
+        onLeaveBack: () => {
+          setActiveSection("home");
+          gsap.to(calc.scale, {
+            ...calculatorStates("home").scale,
+            duration: 1,
+          });
+          gsap.to(calc.position, {
+            ...calculatorStates("home").position,
+            duration: 1,
+          });
+          gsap.to(calc.rotation, {
+            ...calculatorStates("home").rotation,
+            duration: 1,
+          });
+        },
+      },
+    });
+
     //transition to Skills
     gsap.timeline({
       scrollTrigger: {
@@ -268,17 +321,17 @@ const AnimatedBackground = () => {
           });
         },
         onLeaveBack: () => {
-          setActiveSection("home");
+          setActiveSection("about");
           gsap.to(calc.scale, {
-            ...calculatorStates("home").scale,
+            ...calculatorStates("about").scale,
             duration: 1,
           });
           gsap.to(calc.position, {
-            ...calculatorStates("home").position,
+            ...calculatorStates("about").position,
             duration: 1,
           });
           gsap.to(calc.rotation, {
-            ...calculatorStates("home").rotation,
+            ...calculatorStates("about").rotation,
             duration: 1,
           });
         },
@@ -364,6 +417,77 @@ const AnimatedBackground = () => {
         },
       },
     });
+  };
+
+  const aboutText: Record<string, string[]> = {
+    "About Me": [
+      "Hello, My name is Affan Noviananda Putra",
+      "and I'm 23 years old.",
+    ],
+    Experience: [
+      "I have internship experience as an IT support for 2 years.",
+      "and I have several projects about website development",
+      "you can see it on the project page.",
+    ],
+    "Contact Me": [
+      "If you have a full-time job or project ",
+      "about website development that needs help,",
+      "please contact me on the contact page ",
+      "or contact my social media available in this portfolio."
+    ]
+  };
+
+  const getTypingEffectAnimation = () => {
+    if (!splineApp) return;
+
+    let interval: NodeJS.Timeout;
+    let letterIndex = 0;
+    let currentSentenceIndex = 0;
+    let currentSectionIndex = 0;
+    let currentText = "";
+    const sectionKeys = Object.keys(aboutText);
+
+    const typeLetter = () => {
+      const currentSection = sectionKeys[currentSectionIndex];
+      const currentSentence = aboutText[currentSection][currentSentenceIndex];
+
+      splineApp.setVariable("name", currentSection);
+
+      if (letterIndex < currentSentence.length) {
+        currentText += currentSentence[letterIndex];
+        splineApp.setVariable("jobdesc", currentText);
+        letterIndex += 1;
+      } else {
+        clearInterval(interval);
+        setTimeout(() => {
+          letterIndex = 0;
+          currentText = "";
+          splineApp.setVariable("jobdesc", "");
+
+          if (currentSentenceIndex < aboutText[currentSection].length - 1) {
+            currentSentenceIndex += 1;
+          } else {
+            currentSentenceIndex = 0;
+            currentSectionIndex =
+              (currentSectionIndex + 1) % sectionKeys.length;
+          }
+
+          interval = setInterval(typeLetter, 200);
+        }, 1000);
+      }
+    };
+
+    const start = () => {
+      interval = setInterval(typeLetter, 200);
+    };
+
+    const stop = () => {
+      clearInterval(interval);
+      splineApp.setVariable("jobdesc", "");
+      splineApp.setVariable("name", "");
+    };
+
+    return { start, stop };
   };
 
   const getFallingStarsAnimation = () => {

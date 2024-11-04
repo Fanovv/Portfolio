@@ -24,12 +24,28 @@ const AboutSection = () => {
         <div className="grid col-span-1"></div>
         <div
           className={cn(
-            "h-[calc(100dvh-3rem)] md:h-[calc(100dvh-4rem)]",
-            "md:col-span-1",
-            "flex flex-col justify-start md:justify-center items-center md:items-start",
-            "pt-32 sm:pt-0 sm:pb-32 md:p-24 lg:p-40 xl:p-48"
+            "md:col-span-1 xl:h-screen max-h-min",
+            "flex flex-col justify-start md:justify-center items-center",
+            "xl:p-[5%] md:p-20 pt-40"
           )}
-        ></div>
+        >
+          <img
+            src="/assets/person.jpg"
+            className="rounded-full w-[40%] h-auto mb-5"
+          />
+          <span className={cn("max-w-sm md:max-w-lg", "text-center", )}>
+            I am a Computer Science graduate from Diponegoro University in
+            Indonesia. I am a highly motivated person with integrity and
+            purpose.
+            <div className="py-2"></div>
+            During my college years, I actively participated in organizations as
+            well as having work experience, which honed my soft skills such as
+            problem solving and teamwork.
+            <div className="py-2"></div>I am very interested in the fields of
+            Website Development, Network Infrastructure, and System
+            Administrator.
+          </span>
+        </div>
       </div>
     </section>
   );

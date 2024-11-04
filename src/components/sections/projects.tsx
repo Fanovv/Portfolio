@@ -20,6 +20,9 @@ const ProjectSection = () => {
           className="absolute xl:left-[57%] md:left-[60%] left-[65%] translate-x-[-50%] bottom-[-60%] md:bottom-[85%] w-32 h-32 xl:bottom-[86%] md:w-auto md:h-auto"
         />
       </Link>
+      <div className="grid grid-cols-1 md:grid-cols-3">
+
+      </div>
     </section>
   );
 };

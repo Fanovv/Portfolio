@@ -13,13 +13,9 @@ const STATES = {
   },
   about: {
     desktop: {
-      scale: { x: 0.4, y: 0.4, z: 0.4 },
-      position: { x: 0, y: -40, z: 0 },
-      rotation: {
-        x: 0,
-        y: Math.PI / 12,
-        z: 0,
-      },
+      scale: { x: 0.65, y: 0.65, z: 0.65 },
+      position: { x: -600, y: -150, z: 300 },
+      rotation: { x: 0.5, y: 0.4, z: -0.2 },
     },
     mobile: {
       scale: { x: 0.2, y: 0.2, z: 0.2 },
