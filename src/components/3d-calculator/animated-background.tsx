@@ -122,6 +122,7 @@ const AnimatedBackground = () => {
           paused: true,
         }
       );
+
       if (activeSection === "home") {
         rotateCalc.restart();
         teardownCalc.pause();

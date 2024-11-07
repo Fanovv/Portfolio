@@ -20,13 +20,12 @@ const SlideShow = () => {
     <Splide
       options={{
         perPage: 3,
-        start: 0,
+        start: 2,
         pauseOnHover: true,
         arrows: false,
-        // type: "loop",
+        type: "slide",
         autoplay: true,
         perMove: 1,
-        interval: 3000,
         pagination: false,
         rewind: true,
         lazyLoad: "nearby",

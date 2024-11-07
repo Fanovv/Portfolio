@@ -29,3 +29,11 @@
     z-index: 1;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .introduction {
+    h1{
+      font-size: 55px;
+    }
+  }
+}
