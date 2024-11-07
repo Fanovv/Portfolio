@@ -1,9 +1,13 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import SlideShow from "../slide-show";
 
 const ProjectSection = () => {
   return (
-    <section id="projects" className={cn("relative max-w-7xl mx-auto md:h-[130vh] z-[2]")}>
+    <section
+      id="projects"
+      className={cn("relative w-full min-h-max mx-auto z-[2]")}
+    >
       <Link href={"#projects"}>
         <h2
           className={cn(
@@ -17,9 +21,15 @@ const ProjectSection = () => {
         </h2>
         <img
           src="/assets/signature.svg"
-          className="absolute xl:left-[57%] md:left-[60%] left-[65%] translate-x-[-50%] bottom-[-60%] md:bottom-[85%] w-32 h-32 xl:bottom-[86%] md:w-auto md:h-auto"
+          className="absolute xl:left-[57%] md:left-[60%] left-[65%] translate-x-[-50%] bottom-[77%] md:bottom-[78%] w-32 h-32 xl:bottom-[80%] md:w-auto md:h-auto"
         />
       </Link>
+      <p className="mx-auto mt-14 line-clamp-4 max-w-3xl font-normal text-md md:text-base text-center text-neutral-300">
+          (hint: press the existing image)
+        </p>
+      <div className="pt-20">
+      <SlideShow/>
+      </div>
     </section>
   );
 };
