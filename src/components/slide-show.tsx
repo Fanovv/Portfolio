@@ -132,7 +132,7 @@ const SlideShow = () => {
                   </div>
                   <div className="flex gap-2 px-2 flex-wrap">
                     {project.skills.map((skill, idx) => (
-                      <span className="bg-white bg-opacity-80 backdrop-blur-md rounded-lg inline-block px-2 py-1 font-medium text-xs xl:text-base">
+                      <span key={idx} className="bg-white bg-opacity-80 backdrop-blur-md rounded-lg inline-block px-2 py-1 font-medium text-xs xl:text-base">
                         {skill}
                       </span>
                     ))}
