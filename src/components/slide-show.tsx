@@ -1,5 +1,7 @@
+// @ts-ignore
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import projects from "@/data/projects";
