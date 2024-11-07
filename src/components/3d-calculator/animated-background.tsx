@@ -25,10 +25,10 @@ const AnimatedBackground = () => {
 
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
   const [activeSection, setActiveSection] = useState<Section>("home");
-  // const [fallingStars, setFallingStars] = useState<{
-  //   start: () => void;
-  //   stop: () => void;
-  // }>();
+  const [fallingStars, setFallingStars] = useState<{
+    start: () => void;
+    stop: () => void;
+  }>();
   const [typingEffect, setTypingEffect] = useState<{
     start: () => void;
     stop: () => void;
@@ -108,7 +108,7 @@ const AnimatedBackground = () => {
         calc.rotation,
         {
           y: 0,
-          x: -Math.PI,
+          x: 0,
           z: 0,
         },
         {
@@ -125,6 +125,7 @@ const AnimatedBackground = () => {
       if (activeSection === "home") {
         rotateCalc.restart();
         teardownCalc.pause();
+        typingEffect?.stop();
       } else if (activeSection === "contact") {
         rotateCalc.pause();
       } else {
@@ -133,31 +134,34 @@ const AnimatedBackground = () => {
       }
 
       if (activeSection === "about") {
-        await sleep(300);
+        await sleep(600);
         typingEffect?.start();
       } else {
-        await sleep(200);
+        await sleep(600);
         typingEffect?.stop();
       }
 
       if (activeSection === "skills") {
+        typingEffect?.stop();
       } else {
         splineApp.setVariable("heading", "");
         splineApp.setVariable("desc", "");
       }
 
-      // if (activeSection === "projects") {
-      //   await sleep(300);
-      //   fallingStars?.start();
-      // } else {
-      //   await sleep(200);
-      //   fallingStars?.stop();
-      // }
+      if (activeSection === "projects") {
+        await sleep(300);
+        fallingStars?.stop();
+        typingEffect?.stop();
+      } else {
+        await sleep(200);
+        fallingStars?.stop();
+      }
 
       if (activeSection === "contact") {
         await sleep(600);
         teardownCalc.restart();
         keycapAnimations?.start();
+        typingEffect?.stop();
       } else {
         await sleep(600);
         teardownCalc.pause();
