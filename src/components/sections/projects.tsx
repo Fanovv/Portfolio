@@ -25,7 +25,7 @@ const ProjectSection = () => {
         />
       </Link>
       <p className="mx-auto mt-14 line-clamp-4 max-w-3xl font-normal text-md md:text-base text-center text-neutral-300">
-          (hint: press the existing image)
+          (Click on any project to dive in!)
         </p>
       <div className="pt-20">
       <SlideShow/>

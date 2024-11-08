@@ -3,7 +3,7 @@ const projects = [
     id: "dipopedia",
     title: "Dipopedia 2020",
     src: "/assets/projects/Untitled-1.jpg",
-    desc: "Dipopedia is my first project, Dipopedia is a mobile application used to provide introductory information about Diponegoro University to new students.",
+    desc: "Dipopedia is my first project, Dipopedia is a mobile application where there is information from Diponegoro University. This application also has notifications for new students during the introduction of the campus area.",
     skills: ["Flutter", "Dart", "Firebase", "Adobe XD", "Visual Studio Code"],
   },
   {
@@ -34,7 +34,7 @@ const projects = [
     id: "rumpay",
     title: "Rumah Payung",
     src: "/assets/projects/Untitled-5.jpg",
-    desc: "Rumah Payung is the best place for you to buy various types of umbrellas or custom, not only umbrellas but Rumah Payung also have several products such as mugs, tumblers, and others.",
+    desc: "Rumah Payung is a website that was asked to be remade to make it more attractive to look at, this website also has a feature to leave comments from customers and this web also has a dashboard to manage products and others.",
     skills: ["NextJS", "TypeScript", "TailwindCSS", "PostgreSQL", "Prisma", "Daisy UI", "Visual Studio Code"],
   },
 ];

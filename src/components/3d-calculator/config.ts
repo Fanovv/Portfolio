@@ -30,9 +30,9 @@ const STATES = {
   skills: {
     desktop: {
       scale: { x: 0.6, y: 0.6, z: 0.6 },
-      position: { x: 0, y: -100, z: 0 },
+      position: { x: 0, y: -150, z: 0 },
       rotation: {
-        x: 0.3,
+        x: 0.5,
         y: Math.PI / 12,
         z: 0,
       },

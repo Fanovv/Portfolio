@@ -24,7 +24,7 @@ const SkillSection = () => {
           <img src="/assets/signature.svg" className="absolute left-[50%] translate-x-[-50%] bottom-2 w-32 h-32 md:bottom-12 md:w-auto md:h-auto"/>
         </Link>
         <p className="mx-auto mt-14 line-clamp-4 max-w-3xl font-normal text-md md:text-base text-center text-neutral-300">
-          (hint: press a key)
+          (Tap any key to reveal my skill set!)
         </p>
       </div>
     </section>
