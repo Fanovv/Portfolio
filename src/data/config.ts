@@ -26,7 +26,7 @@ const config = {
   author: "Affan Noviananda Putra",
   email: "affannovian@gmail.com",
   resume: "https://drive.google.com/file/d/1Foyesl3G9Bey-FpLQkI3xciKP8KvG9Rq/view?usp=sharing",
-  site: "https://fanov.dev",
+  site: "https://affannovian.me",
   social: {
     linkedin: "https://www.linkedin.com/in/affannovianandaputra/",
     instagram: "https://www.instagram.com/affannovian",
